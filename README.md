@@ -62,7 +62,7 @@ After enabling the modbus server (via button *Enable Server*) the device will be
 
 ## Registers
 
-###**🕵️ 0. Probe Register (Model Identification)**
+### 🕵️ **0. Probe Register (Model Identification)**
  
 | Hex Addr | Dec Addr | Register Type | Path | Data Format | Scale | Function Description |
 | --- | --- | --- | --- | --- | --- | --- |
