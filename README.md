@@ -56,7 +56,7 @@ Go to *Configuration &rarr; VM-3P75CT*. Here you are able to select a configured
 
 Under *Sensor Configuration* you select per data register the corresponding meter sensor. You can only select sensors, which are configured in the script. You can also choose *Fixed Value* and *Calculated*. *Fixed Value* allows you to enter a fixed value for that data register. *Calculated* allows you to calculate the value of that data register based on other available values. 
 
-Under *Alarms Configuration* you can set minimal and maximal values for frequency and voltage. If values are out of these borders alarms are raised. Alarms are also raised if no data is available from the configured meter or the meter isn't configured any more. You can set the the modbus server to shutdown if a alarm is raised. Be aware, that alarms are not recognized by VenusOS. Populating the error code register is not enough to get VenusOS to regognize the error.
+Under *Alarms Configuration* you can set minimal and maximal values for frequency and voltage. If values are out of these borders alarms are raised. Alarms are also raised if no data is available from the configured meter or the meter isn't configured any more. You can set the the modbus server to shutdown if a alarm is raised. Be aware, that alarms are not recognized by VenusOS. Populating the error code register is not enough to get VenusOS to recognize the error.
 
 After enabling the modbus server (via button *Enable Server*) the device will be found by VenusOS when scanning for modbus devices. 
 
