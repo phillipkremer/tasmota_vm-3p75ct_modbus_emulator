@@ -253,7 +253,7 @@ class VM_3P75CT_emulater
     end
 
     def web_add_main_button()
-        webserver.content_send("<div style='padding:0'><hr><table style='width: 100%;'>")
+        webserver.content_send("<div id='statusDiv' style='padding:0'><hr><table style='width: 100%;'>")
         if !global.configs.item("server_enable")[2] webserver.content_send("<tr><td><label><b>Modbus UDP Server</b></label></td><td align=\"right\"><label style='color:red;'>Disabled</label></td></tr>") end
         if global.configs.item("server_enable")[2] webserver.content_send("<tr><td><label><b>Modbus UDP Server</b></label></td><td align=\"right\"><label style='color:green;'>Enabled</label></td></tr>") end
         if global.server_running webserver.content_send("<tr><td><label><b>Server Status</b></label></td><td align=\"right\"><label style='color:green;'>Running</label></td></tr>") end
@@ -268,6 +268,35 @@ class VM_3P75CT_emulater
         if global.errors[4] webserver.content_send("<tr><td><label style='color:red;'><b>Error:</b></label></td><td align=\"right\">Grid frequency out of range</td></tr>") end
         if global.errors[5] webserver.content_send("<tr><td><label style='color:red;'><b>Error:</b></label></td><td align=\"right\">Unknown error</td></tr>") end
         webserver.content_send("</table><hr></div>")
+        webserver.content_send("<script>" +
+         "function updateStatus() {" +
+             "const apiUrl = window.location.href;" + # Use the current page's URL dynamically
+             "fetch(apiUrl)" +
+                  ".then(response => {" +
+                        "if (!response.ok) {" +
+                          "throw new Error('HTTP error! Status: ' + response.status);" +
+                      "}" +
+                "return response.text();" + # Expecting HTML content
+                "})" +
+                ".then(data => {"
+                    # Parse the response as HTML
+                    "const parser = new DOMParser();"
+                    "const doc = parser.parseFromString(data, 'text/html');"
+                    # Extract the content of the 'statusDiv'
+                    "const newContent = doc.querySelector('#statusDiv').innerHTML;" +
+                    # Update the current 'statusDiv' with the new content
+                    "document.getElementById('statusDiv').innerHTML = newContent;" +
+                "})" +
+                ".catch(error => {" +
+                    "console.error('Error fetching the status:', error);" +
+                    "document.getElementById('statusDiv').innerHTML = '<p style=\"color:red;\">Failed to load status. Please check the connection.</p>';" +
+                "});" +
+        "}" +
+        # Refresh the status every second
+        "setInterval(updateStatus, 1000);" +
+        # Initial load
+        "updateStatus();" +
+        "</script>")
     end 
 
     def web_add_config_button() # add button in config page
@@ -732,6 +761,8 @@ class VM_3P75CT_emulater
     end
 
     def every_second()
+        # restart smlevery second
+        # tasmota.cmd("sensor53 r", true)
         # called every 1s via normal way 
         if tasmota.eth()['up'] || tasmota.wifi()['up']
             if global.server_running == false && global.configs.item("server_enable")[2] && !global.server_sutdown
@@ -792,7 +823,8 @@ class VM_3P75CT_emulater
             sensorkeys = meter.keys()
             if size(meter) > 0 
                 for i: 1 .. size(meter)
-                    if int(meter.item(sensorkeys())) != 0  error = false end
+                    var sensorvalue = meter.item(sensorkeys())
+                    if int(sensorvalue) != 0 && type(sensorvalue) != "string" error = false end
                 end
             end
             global.errors[2] = error 
