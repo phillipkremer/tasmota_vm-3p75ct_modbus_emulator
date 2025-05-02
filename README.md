@@ -130,8 +130,11 @@ After enabling the modbus server (via button *Enable Server*) the device will be
 
 ## Screenshots
 ![main_page](https://github.com/user-attachments/assets/9231969d-202f-45d5-8d30-8811205c2361)
+<br>
 ![config_page_1](https://github.com/user-attachments/assets/298ead85-7aba-4a3b-b51b-6ae75949ecc3)
+<br>
 ![venosos_saved_devices](https://github.com/user-attachments/assets/80482ca2-b9c9-4c76-8752-3da3fc1e0f0e)
+<br>
 ![venosos_device](https://github.com/user-attachments/assets/6b7c65d7-4a15-4fa9-bc81-058c9ae4989d)
 
 
