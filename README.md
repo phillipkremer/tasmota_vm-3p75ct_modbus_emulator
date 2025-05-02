@@ -7,10 +7,11 @@
 
 1. [Disclaimer](#disclaimer)
 2. [Purpose](#purpose)
-4. [Tasmota](#tasmota)
-5. [Install](#install)
-6. [Config](#config)
-7. [Registers](#registers)
+3. [Tasmota](#tasmota)
+4. [Install](#install)
+5. [Config](#config)
+6. [Registers](#registers)
+7. [Screenshots](#screenshots)
 
 
 ## Disclaimer
@@ -126,5 +127,11 @@ After enabling the modbus server (via button *Enable Server*) the device will be
 | `0x3052` | `12370` | `Reg_u32b` | `/Ac/L3/Energy/Forward` | 32-bit unsigned (2×16-bit) | × 0.01 | Energy imported on L3. |
 | `0x3054` | `12372` | `Reg_u32b` | `/Ac/L3/Energy/Reverse` | 32-bit unsigned (2×16-bit) | ×0.01 | Cumulative reverse (export) energy on L3 (kWh). |
 | `0x308A` | `12426` | `Reg_s32b` | `/Ac/L3/Power` | 32-bit signed integer | — | Real-time active power on L3 (W). |
+
+## Screenshots
+![main_page](https://github.com/user-attachments/assets/9231969d-202f-45d5-8d30-8811205c2361)
+![config_page_1](https://github.com/user-attachments/assets/298ead85-7aba-4a3b-b51b-6ae75949ecc3)
+![venosos_saved_devices](https://github.com/user-attachments/assets/80482ca2-b9c9-4c76-8752-3da3fc1e0f0e)
+![venosos_device](https://github.com/user-attachments/assets/6b7c65d7-4a15-4fa9-bc81-058c9ae4989d)
 
 
