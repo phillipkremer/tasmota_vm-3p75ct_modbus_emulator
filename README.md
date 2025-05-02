@@ -22,6 +22,7 @@ I cannot guaranty that the script works as intended. I'm not responsible if you 
 
 The script emulates the Modbus/UDP interface of a Victron VM-3P75CT. Possible data sources are the Tasmota SmartMeterInterface (if configured correctly), static values and calculated values from available data. 
 The ESP32 Tasmota device is able to mimic every possible role and register, that the VM-3P75CT is able to provide. Settings can be adjusted via the built in Tasmota Web Interface.
+Please test if the scripts works in your configuration as intended before using it in a productive manner.
 
 
 ## Tasmota
